@@ -5,7 +5,7 @@ const db = require("../model/helper");
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.send({ title: api });
+  res.send({ title: 'api' });
 });
 
 module.exports = router;

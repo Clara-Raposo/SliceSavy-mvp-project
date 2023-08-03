@@ -1,14 +1,16 @@
-import React from 'react';
-//import { useState } from 'react'
-import './App.css'
+import React from "react";
+import "./App.css";
+import Navbar from './Components/Navbar';
+//import Map from './Components/Map';
+//import FavoritePizzerias from './Components/FavoritePizzerias';
+//import Footer from './Components/Footer';
 
-function App() {
-    return (
+const App = () => {
+  return (
     <div>
-    <h1>Hola mundo</h1>
+      <Navbar />
     </div>
-    )
+  );
+};
 
-}
-
-export default App
+export default App;
