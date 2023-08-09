@@ -25,4 +25,9 @@ CREATE TABLE favourites (
 );
 
 INSERT INTO pizzerias (name, address, latitude, longitude)
-        VALUES ('Makekosa', 'C. de Floridablanca, 102, 08015 Barcelona', 41.379709576724245, 2.160408546182025);
+        VALUES ('Makekosa', 'C. de Floridablanca, 102, 08015 Barcelona', 41.37966127472237, 2.1606123940649358);
+
+INSERT INTO pizzerias (name, address, latitude, longitude)
+        VALUES ('Pizzeria Napoletana A33', 'Carrer de Manso, 22, 08015 Barcelona', 41.37637653560769, 2.16038494433031);
+
+

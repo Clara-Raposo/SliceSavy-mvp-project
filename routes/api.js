@@ -9,20 +9,32 @@ const db = require("../model/helper");
 // });
 
 //Obtener todas las pizzerias
-// router.get("/pizzerias", async (req, res) => {
-//   try{
-//   const result = await db("SELECT * from pizzerias");
-//   const pizzerias = result.data;
-//   res.send(pizzerias);
-// } catch (error) {
-//   res.send(500);
-// }
-// });
 router.get("/pizzerias", async (req, res) => {
+  try{
+  const result = await db("SELECT * from pizzerias");
+  const pizzerias = result.data;
+  res.send(pizzerias);
+} catch (error) {
+  res.send(500);
+}
+});
+// router.get("/pizzerias", async (req, res) => {
+//   try {
+//     const result = await db.query('SELECT * FROM pizzerias');
+//     const pizzerias = result.data;
+//     res.json(pizzerias);
+//   } catch (error) {
+//     console.error(error);
+//     res.status(500).json({ error: 'Internal Server Error' });
+//   }
+// });
+
+router.get('/pizzerias/:id', async (req, res) => {
   try {
-    const result = await db.query('SELECT * FROM pizzerias');
-    const pizzerias = result.data;
-    res.json(pizzerias);
+    const pizzeriaId = req.params.id;
+    const result = await db.query('SELECT * FROM pizzerias WHERE id = ?', [pizzeriaId]);
+    const pizzeria = result.data[0];
+    res.json(pizzeria);
   } catch (error) {
     console.error(error);
     res.status(500).json({ error: 'Internal Server Error' });
