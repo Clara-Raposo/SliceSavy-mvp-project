@@ -21,7 +21,7 @@ const Map = () => {
     lat: 41.3851,
     lng: 2.1734,
   };
-
+ 
   // if (pizzerias.length === 0) {
   //   return <div>Loading...</div>;
   // }
@@ -45,3 +45,6 @@ const Map = () => {
 };
 
 export default Map;
+
+
+// 41.379733727586775, 2.160430003952932

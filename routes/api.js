@@ -41,6 +41,8 @@ router.get('/pizzerias/:id', async (req, res) => {
   }
 });
 
+
+
 // Añade a favoritos 
 router.post('/favourites', async (req, res) => {
   try {
@@ -49,8 +51,13 @@ router.post('/favourites', async (req, res) => {
     if (!pizzeriaId) {
       return res.status(400).json({ error: 'Missing pizzeriaId' });
     }
+    // Controlo que la pizzeria no exista ya 
+    const checkResult = await db(`SELECT id FROM favourites WHERE pizzeria_id = ${pizzeriaId}`);
+    if (checkResult.data.length != 0) {
+      return res.status(404).json({ error: 'Pizzeria is in favorites.' });
+    }
 
-    const result = await db.query('INSERT INTO favourites (pizzeria_id) VALUES (?)', [pizzeriaId]);
+    const result = await db(`INSERT INTO favourites (pizzeria_id) VALUES (${pizzeriaId})`);
     res.json({ message: 'Pizzeria added to favourites' });
   } catch (error) {
     console.error(error);
