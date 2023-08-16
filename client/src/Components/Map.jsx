@@ -1,7 +1,9 @@
 import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
-const Map = () => {
+
+const Map = ({ addToFavorites }) => {
+  const [showCustomMarkers, setShowCustomMarkers] = useState(true);
   const [selectedPizzeria, setSelectedPizzeria] = useState(null);
   const [pizzerias, setPizzerias] = useState([]);
 
@@ -28,6 +30,17 @@ const Map = () => {
         mapContainerStyle={mapStyles}
         zoom={14}
         center={center}
+        options={{
+          mapTypeControl: false,
+          streetViewControl: false,
+          styles: [
+            {
+              featureType: 'poi',
+              elementType: 'labels', 
+              stylers: [{ visibility: showCustomMarkers ? 'off' : 'on' }],
+            },
+          ],
+        }}
       >
         {pizzerias.map(pizzeria => (
           <Marker
@@ -45,6 +58,7 @@ const Map = () => {
             <div>
               <h3>{selectedPizzeria.name}</h3>
               <p>{selectedPizzeria.address}</p>
+              <button onClick={() => addToFavorites(selectedPizzeria)}>Guardar en Favoritos</button>
             </div>
           </InfoWindow>
         )}
