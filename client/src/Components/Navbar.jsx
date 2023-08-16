@@ -9,6 +9,12 @@ export default function Navbar() {
     setIsNavExpanded(!isNavExpanded);
   };
 
+  const handleNavLinkClick = (event) => {
+    event.preventDefault(); // Prevent the default navigation behavior
+    toggleNav(); // Close the navigation menu
+  };
+
+
   return (
     <nav className="navigation">
       <a href="/" className="brand-name">
@@ -27,13 +33,13 @@ export default function Navbar() {
       <div className={`navigation-menu ${isNavExpanded ? "expanded" : ""}`}>
         <ul>
           <li>
-            <a href="/home">Home</a>
+            <a href="/home" onClick={handleNavLinkClick}>Home</a>
           </li>
           <li>
-            <a href="/about">About</a>
+            <a href="/about" onClick={handleNavLinkClick}>About</a>
           </li>
           <li>
-            <a href="/contact">Contact</a>
+            <a href="/contact" onClick={handleNavLinkClick}>Contact</a>
           </li>
         </ul>
       </div>

@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
 
 const Map = () => {
+  const [showCustomMarkers, setShowCustomMarkers] = useState(true);
     const [pizzerias, setPizzerias] = useState([]);
   
     useEffect(() => {
@@ -32,6 +33,17 @@ const Map = () => {
         mapContainerStyle={mapStyles}
         zoom={14}
         center={center}
+        options={{
+          mapTypeControl: false,
+          streetViewControl: false,
+          styles: [
+            {
+              featureType: 'poi',
+              elementType: 'labels', 
+              stylers: [{ visibility: showCustomMarkers ? 'off' : 'on' }],
+            },
+          ],
+        }}
       >
       {pizzerias.map(pizzeria => (
           <Marker
@@ -47,4 +59,3 @@ const Map = () => {
 export default Map;
 
 
-// 41.379733727586775, 2.160430003952932
