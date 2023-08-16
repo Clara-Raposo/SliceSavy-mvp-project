@@ -1,17 +1,16 @@
 import { useState, useEffect } from 'react';
-import { GoogleMap, LoadScript, Marker } from '@react-google-maps/api';
+import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 
 const Map = () => {
-  const [showCustomMarkers, setShowCustomMarkers] = useState(true);
-    const [pizzerias, setPizzerias] = useState([]);
-  
-    useEffect(() => {
-      fetch('/api/pizzerias')
-        .then(response => response.json())
-        .then(data => setPizzerias(data))
-        .catch(error => console.error(error));
-    }, []);
+  const [selectedPizzeria, setSelectedPizzeria] = useState(null);
+  const [pizzerias, setPizzerias] = useState([]);
 
+  useEffect(() => {
+    fetch('/api/pizzerias')
+      .then(response => response.json())
+      .then(data => setPizzerias(data))
+      .catch(error => console.error(error));
+  }, []);
 
   const mapStyles = {
     height: '500px',
@@ -22,10 +21,6 @@ const Map = () => {
     lat: 41.3851,
     lng: 2.1734,
   };
- 
-  // if (pizzerias.length === 0) {
-  //   return <div>Loading...</div>;
-  // }
 
   return (
     <LoadScript googleMapsApiKey="AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E">
@@ -33,29 +28,32 @@ const Map = () => {
         mapContainerStyle={mapStyles}
         zoom={14}
         center={center}
-        options={{
-          mapTypeControl: false,
-          streetViewControl: false,
-          styles: [
-            {
-              featureType: 'poi',
-              elementType: 'labels', 
-              stylers: [{ visibility: showCustomMarkers ? 'off' : 'on' }],
-            },
-          ],
-        }}
       >
-      {pizzerias.map(pizzeria => (
+        {pizzerias.map(pizzeria => (
           <Marker
             key={pizzeria.id}
             position={{ lat: pizzeria.latitude, lng: pizzeria.longitude }}
+            onClick={() => setSelectedPizzeria(pizzeria)}
           />
         ))}
+
+        {selectedPizzeria && (
+          <InfoWindow
+            position={{ lat: selectedPizzeria.latitude, lng: selectedPizzeria.longitude }}
+            onCloseClick={() => setSelectedPizzeria(null)}
+          >
+            <div>
+              <h3>{selectedPizzeria.name}</h3>
+              <p>{selectedPizzeria.address}</p>
+            </div>
+          </InfoWindow>
+        )}
       </GoogleMap>
     </LoadScript>
   );
 };
 
 export default Map;
+
 
 
