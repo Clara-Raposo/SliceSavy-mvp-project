@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
-
+import "../Styles/Map.css";
 
 const Map = ({ addToFavorites }) => {
   const [showCustomMarkers, setShowCustomMarkers] = useState(true);
@@ -55,10 +55,17 @@ const Map = ({ addToFavorites }) => {
             position={{ lat: selectedPizzeria.latitude, lng: selectedPizzeria.longitude }}
             onCloseClick={() => setSelectedPizzeria(null)}
           >
-            <div>
-              <h3>{selectedPizzeria.name}</h3>
-              <p>{selectedPizzeria.address}</p>
-              <button onClick={() => addToFavorites(selectedPizzeria)}>Guardar en Favoritos</button>
+            <div className='info-window'>
+              <h3 className="info-window__title">{selectedPizzeria.name}</h3>
+              <p className="info-window__address">{selectedPizzeria.address}</p>
+              <img 
+              src={selectedPizzeria.photo_url} 
+              alt={selectedPizzeria.name} 
+              className="info-window__photo"
+              />
+              <button 
+              className="info-window__button"
+              onClick={() => addToFavorites(selectedPizzeria)}>Guardar en Favoritos</button>
             </div>
           </InfoWindow>
         )}
