@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import "../Styles/Map.css";
+import { MdLocalPizza } from "react-icons/md";
 
 const Map = ({ addToFavorites }) => {
   const [showCustomMarkers, setShowCustomMarkers] = useState(true);
@@ -24,6 +25,11 @@ const Map = ({ addToFavorites }) => {
     lng: 2.1734,
   };
 
+  // const pizzaIcon = {
+  //   url: MdLocalPizza, // Use the icon component directly
+  //   scaledSize: new window.google.maps.Size(30, 30), // Set icon size
+  // };
+
   return (
     <LoadScript googleMapsApiKey="AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E">
       <GoogleMap
@@ -39,13 +45,105 @@ const Map = ({ addToFavorites }) => {
               elementType: 'labels', 
               stylers: [{ visibility: showCustomMarkers ? 'off' : 'on' }],
             },
+            {
+        "featureType": "administrative",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 33
+            }
+        ]
+    },
+    {
+        "featureType": "landscape",
+        "elementType": "all",
+        "stylers": [
+            {
+                "color": "#f2e5d4"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#c5dac6"
+            }
+        ]
+    },
+    {
+        "featureType": "poi.park",
+        "elementType": "labels",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road",
+        "elementType": "all",
+        "stylers": [
+            {
+                "lightness": 20
+            }
+        ]
+    },
+    {
+        "featureType": "road.highway",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#c5c6c6"
+            }
+        ]
+    },
+    {
+        "featureType": "road.arterial",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#e4d7c6"
+            }
+        ]
+    },
+    {
+        "featureType": "road.local",
+        "elementType": "geometry",
+        "stylers": [
+            {
+                "color": "#fbfaf7"
+            }
+        ]
+    },
+    {
+        "featureType": "water",
+        "elementType": "all",
+        "stylers": [
+            {
+                "visibility": "on"
+            },
+            {
+                "color": "#acbcc9"
+            }
+        ]
+    }
           ],
+
         }}
       >
         {pizzerias.map(pizzeria => (
           <Marker
             key={pizzeria.id}
             position={{ lat: pizzeria.latitude, lng: pizzeria.longitude }}
+            //icon={pizzaIcon}
             onClick={() => setSelectedPizzeria(pizzeria)}
           />
         ))}
@@ -65,7 +163,7 @@ const Map = ({ addToFavorites }) => {
               />
               <button 
               className="info-window__button"
-              onClick={() => addToFavorites(selectedPizzeria)}>Guardar en Favoritos</button>
+              onClick={() => addToFavorites(selectedPizzeria)}>Add to favorites</button>
             </div>
           </InfoWindow>
         )}
