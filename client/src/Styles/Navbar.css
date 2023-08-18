@@ -6,68 +6,47 @@
     position: relative;
     padding: 0.5rem 0rem;
     background-color: #fff;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
-  .search-bar {
-    display: flex;
-    align-items: center;
-    margin: 0 auto;
-    padding: 0.5rem;
-    background-color: white;
-    border-radius: 5px;
-  }
-  
-  .search-bar input {
-    width: 200px;
-    padding: 0.5rem;
-    border: none;
-    border-radius: 5px;
-    background-color: whitesmoke;
-  }
-  
-  .search-button {
-    background-color: white;
-    color: black;
-    border: none;
-    padding: 0.5rem 1rem;
-    margin-left: 0.5rem;
-    cursor: pointer;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  .search-bar button:hover {
-    background-color: green;
-  }
-  .brand-name {
+
+  .navigation__brand-name {
     text-decoration: none;
-    color: black;
-    font-size: 1.3rem;
+    color: #333333;
+    font-size: 1.5rem;
+    font-weight: bold;
     margin-left: 1rem;
   }
-  .navigation-menu {
+
+  .navigation__menu {
     margin-left: auto;
   }
 
-  .navigation-menu ul {
+  .navigation__menu-list {
     display: flex;
     padding: 0;
+    list-style: none;
   }
 
-  .navigation-menu li {
-    list-style-type: none;
+  .navigation__menu-item {
     margin: 0 1rem;
-  }
-  .navigation-menu li a {
-    text-decoration: none;
-    display: block;
-    width: 100%;
+    transition: background-color 0.2s ease-in-out;
   }
 
-  .hamburger {
+  .navigation__menu-link {
+    text-decoration: none;
+    color: #333333;
+    font-weight: 500;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    transition: background-color 0.2s ease-in-out;
+  }
+
+  .navigation__hamburger {
     border: 0;
     height: 40px;
     width: 40px;
     padding: 0.5rem;
-    background-color: white;
+    background-color: transparent;
     cursor: pointer;
     transition: background-color 0.2s ease-in-out;
     position: absolute;
@@ -75,52 +54,55 @@
     right: 25px;
     transform: translateY(-50%);
     display: none;
+    outline: none;
   }
-  .hamburger:hover {
-    background-color: green;
+
+  .navigation__hamburger-icon {
+    font-size: 1.5rem;
+    color: #333333;
   }
+
+ .navigation__menu-link:hover {
+  background-color: #f5f5f5;
+}
+
+.navigation__hamburger:hover {
+  background-color: #f5f5f5;
+}
   
 
   @media screen and (max-width: 768px) {
-    .hamburger {
+    .navigation__hamburger {
       display: block;
     }
-    .navigation-menu {
-      z-index: 1000;
-      background-color: rgba(255, 255, 255, 0.9);
-    }
-    .navigation-menu ul {
+
+    .navigation__menu {
+      
       position: absolute;
       top: 60px;
-      left: 0;
-      flex-direction: column;
-      width: 100%;
-      height: calc(100vh - 77px);
-      background-color: white;
-      border-top: 1px solid black;
+      right: 0;
+      background-color: #ffffff;
+      border: 1px solid #e0e0e0;
+      border-radius: 4px;
+      box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
       display: none;
     }
-    .navigation-menu li {
+    .navigation__menu-list {
+      flex-direction: column;
+      width: 200px;
+    }
+    .navigation__menu-item {
       text-align: center;
-      margin: 0;
+      margin: 10px;
     }
-    .navigation-menu li a {
-      color: black;
-      width: 100%;
-      padding: 1.5rem 0;
+    .navigation__menu-link {
+      padding: 5px;
     }
-    .navigation-menu li:hover {
+
+    /* .navigation__menu-item:hover {
       background-color: #eee;
-    }
-    .navigation-menu.expanded ul {
-        display: block;
-    }
-    .search-bar input {
-        max-width: 30%;
-        padding: 0.5rem;
-        border: none;
-        border-radius: 5px;
-        background-color: whitesmoke;
+    } */
+    .navigation__menu .navigation__menu--expanded {
+    display: block;
   }
-  
 }

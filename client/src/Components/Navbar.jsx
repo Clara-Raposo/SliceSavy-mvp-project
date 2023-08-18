@@ -1,6 +1,6 @@
 import { useState } from "react";
 import "../Styles/Navbar.css";
-import { HiSearch, HiMenu } from "react-icons/hi";
+import { HiMenu } from "react-icons/hi";
 
 export default function Navbar() {
   const [isNavExpanded, setIsNavExpanded] = useState(false);
@@ -17,29 +17,22 @@ export default function Navbar() {
 
   return (
     <nav className="navigation">
-      <a href="/" className="brand-name">
+      <a href="/" className="navigation__brand-name">
         SliceSavy
       </a>
-      <div className="search-bar">
-        <input type="text" placeholder="Search" />
-        <button className="search-button">
-        <HiSearch />
-        </button>
-
-      </div>
-      <button className="hamburger" onClick={toggleNav}>
-        <HiMenu /> 
+      <button className="navigation__hamburger" onClick={toggleNav}>
+        <HiMenu className="navigation__hamburger-icon" /> 
       </button>
-      <div className={`navigation-menu ${isNavExpanded ? "expanded" : ""}`}>
-        <ul>
-          <li>
-            <a href="/home" onClick={handleNavLinkClick}>Home</a>
+      <div className={`navigation__menu ${isNavExpanded ? "navigation__menu--expanded" : ""}`}>
+        <ul className="navigation__menu-list">
+          <li className="navigation__menu-item">
+            <a href="/home" className="navigation__menu-link" onClick={handleNavLinkClick}>Home</a>
           </li>
-          <li>
-            <a href="/about" onClick={handleNavLinkClick}>About</a>
+          <li className="navigation__menu-item">
+            <a href="/about" className="navigation__menu-link" onClick={handleNavLinkClick}>About</a>
           </li>
-          <li>
-            <a href="/contact" onClick={handleNavLinkClick}>Contact</a>
+          <li className="navigation__menu-item">
+            <a href="/contact" className="navigation__menu-link" onClick={handleNavLinkClick}>Contact</a>
           </li>
         </ul>
       </div>
