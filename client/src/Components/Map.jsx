@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import "../Styles/Map.css";
-import { MdLocalPizza } from "react-icons/md";
 
 const Map = ({ addToFavorites }) => {
   const [showCustomMarkers, setShowCustomMarkers] = useState(true);
@@ -24,11 +23,6 @@ const Map = ({ addToFavorites }) => {
     lat: 41.3851,
     lng: 2.1734,
   };
-
-  // const pizzaIcon = {
-  //   url: MdLocalPizza, // Use the icon component directly
-  //   scaledSize: new window.google.maps.Size(30, 30), // Set icon size
-  // };
 
   return (
     <LoadScript googleMapsApiKey="AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E">
@@ -143,7 +137,10 @@ const Map = ({ addToFavorites }) => {
           <Marker
             key={pizzeria.id}
             position={{ lat: pizzeria.latitude, lng: pizzeria.longitude }}
-            //icon={pizzaIcon}
+            // icon={{
+            //   url: 'client/src/assets/pizza-icon.svg',
+            //   scaledSize: new window.google.maps.Size(30, 30),
+            // }}
             onClick={() => setSelectedPizzeria(pizzeria)}
           />
         ))}
@@ -173,6 +170,3 @@ const Map = ({ addToFavorites }) => {
 };
 
 export default Map;
-
-
-
