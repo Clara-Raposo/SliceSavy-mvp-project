@@ -13,10 +13,10 @@ const Footer = () => {
             <h2>Social Media</h2>
         </div>
          <div className="footer__social-logos">
-        <a href="/" onClick={handleClick}><BsInstagram /></a>
-        <a href="/" onClick={handleClick}><BsFacebook /></a>
-        <a href="/" onClick={handleClick}><BsTwitter /></a>
-        <a href="/" onClick={handleClick}><BsPinterest /></a>
+        <a href="/" className="footer__social-item" onClick={handleClick}><BsInstagram /></a>
+        <a href="/" className="footer__social-item"  onClick={handleClick}><BsFacebook /></a>
+        <a href="/" className="footer__social-item"  onClick={handleClick}><BsTwitter /></a>
+        <a href="/" className="footer__social-item"  onClick={handleClick}><BsPinterest /></a>
         </div>
         <div className="footer__contact">
         <h2>Contact</h2>

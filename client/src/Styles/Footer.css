@@ -1,25 +1,87 @@
 .footer 
-{  
+{ 
+    font-family: 'Bricolage Grotesque', sans-serif;
+    margin-right: 3rem; 
+    margin-left: 3rem; 
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 2fr 0.5fr 0.5fr;
     grid-template-rows: 0.1fr 0.9fr;
     grid-auto-rows: 1fr;
-    gap: 20px 30px;
+    gap: 20px 100px;
     grid-auto-flow: row;
+    align-items: baseline;
     grid-template-areas:
       "footer__brand-name footer__social footer__contact"
       "footer__description footer__social-logos footer__contact-item";
   }
   
-  .footer__brand-name { grid-area: footer__brand-name; }
+  .footer__brand-name 
+  { 
+    grid-area: footer__brand-name; 
+    color: #232b2b;
+    font-weight: 600;
+  }
   
-  .footer__description { grid-area: footer__description; }
+  .footer__description 
+  { 
+    grid-area: footer__description; 
+    hyphens: none;
+    font-size: small;
+    font-weight: 400;
+    letter-spacing: 1.5px;
+    overflow-wrap: break-word;
+    text-align: justify;
+    text-indent: 5%;
+    text-decoration: none;
+    color: #738276;
+  }
   
-  .footer__social { grid-area: footer__social; }
+  .footer__social 
+  { 
+    grid-area: footer__social; 
+    color: #232b2b;
+    font-weight: 600;
+  } 
+
+  .footer__contact 
+  { 
+    grid-area: footer__contact; 
+    color: #232b2b;
+    font-weight: 600;
+  }
   
-  .footer__contact { grid-area: footer__contact; }
+  .footer__social-logos 
+  { 
+    grid-area: footer__social-logos; 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+
+  .footer__social-item{
+    font-size: larger;
+    text-decoration: none;
+    cursor: pointer;
+    color: #738276;
+}
   
-  .footer__social-logos { grid-area: footer__social-logos; }
-  
-  .footer__contact-item { grid-area: footer__contact-item; }
-  
+  .footer__contact-item 
+  { 
+    grid-area: footer__contact-item; 
+    color: #738276;
+  }
+  @media (max-width: 768px) {
+    .footer {
+      grid-template-columns: 1fr; 
+      grid-template-rows: 0.3fr 1fr 0.3fr 0.3fr 0.3fr 0.3fr; 
+      align-items: center;
+      grid-template-areas:
+        "footer__brand-name"
+        "footer__description"
+        "footer__social"
+        "footer__social-logos"
+        "footer__contact"
+        "footer__contact-item";
+      gap: 10px;
+    }
+  }
