@@ -3,10 +3,10 @@ import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/ap
 import "../Styles/Map.css";
 
 const Map = ({ addToFavorites }) => {
-  const [showCustomMarkers, setShowCustomMarkers] = useState(true);
   const [selectedPizzeria, setSelectedPizzeria] = useState(null);
   const [pizzerias, setPizzerias] = useState([]);
 
+  
   useEffect(() => {
     fetch('/api/pizzerias')
       .then(response => response.json())
@@ -14,7 +14,9 @@ const Map = ({ addToFavorites }) => {
       .catch(error => console.error(error));
   }, []);
 
-  const mapStyles = {
+    const showCustomMarkers = true;
+
+    const mapStyles = {
     height: '500px',
     width: '100%',
   };

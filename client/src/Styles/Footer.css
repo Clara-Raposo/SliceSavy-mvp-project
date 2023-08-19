@@ -1,0 +1,25 @@
+.footer 
+{  
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 0.1fr 0.9fr;
+    grid-auto-rows: 1fr;
+    gap: 20px 30px;
+    grid-auto-flow: row;
+    grid-template-areas:
+      "footer__brand-name footer__social footer__contact"
+      "footer__description footer__social-logos footer__contact-item";
+  }
+  
+  .footer__brand-name { grid-area: footer__brand-name; }
+  
+  .footer__description { grid-area: footer__description; }
+  
+  .footer__social { grid-area: footer__social; }
+  
+  .footer__contact { grid-area: footer__contact; }
+  
+  .footer__social-logos { grid-area: footer__social-logos; }
+  
+  .footer__contact-item { grid-area: footer__contact-item; }
+  

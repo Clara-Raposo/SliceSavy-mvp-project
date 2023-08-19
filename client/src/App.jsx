@@ -3,7 +3,7 @@ import "./App.css";
 import Navbar from './Components/Navbar';
 import Map from './Components/Map';
 import FavoritePizzerias from './Components/FavoritePizzerias';
-//import Footer from './Components/Footer';
+import Footer from './Components/Footer';
 
 const App = () => {
   const [favoritePizzerias, setFavoritePizzerias] = useState([]);
@@ -26,6 +26,7 @@ const App = () => {
       <FavoritePizzerias 
       favoritePizzerias={favoritePizzerias} 
       removeFromFavorites={removeFromFavorites} />
+      <Footer />
     </div>
   );
 };
