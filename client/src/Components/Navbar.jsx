@@ -10,8 +10,8 @@ export default function Navbar() {
   };
 
   const handleNavLinkClick = (event) => {
-    event.preventDefault(); // Prevent the default navigation behavior
-    toggleNav(); // Close the navigation menu
+    event.preventDefault(); 
+    toggleNav(); 
   };
 
 

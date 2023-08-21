@@ -18,17 +18,8 @@ router.get("/pizzerias", async (req, res) => {
   res.send(500);
 }
 });
-// router.get("/pizzerias", async (req, res) => {
-//   try {
-//     const result = await db.query('SELECT * FROM pizzerias');
-//     const pizzerias = result.data;
-//     res.json(pizzerias);
-//   } catch (error) {
-//     console.error(error);
-//     res.status(500).json({ error: 'Internal Server Error' });
-//   }
-// });
 
+//Obtener información de una pizzería específica
 router.get('/pizzerias/:id', async (req, res) => {
   try {
     const pizzeriaId = req.params.id;

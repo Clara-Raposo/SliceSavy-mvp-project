@@ -65,11 +65,12 @@
     color: #738276;
 }
   
-  .footer__contact-item 
-  { 
-    grid-area: footer__contact-item; 
-    color: #738276;
-  }
+.footer__contact-item 
+{ 
+  grid-area: footer__contact-item; 
+  color: #738276;
+}
+
   @media (max-width: 768px) {
     .footer {
       grid-template-columns: 1fr; 

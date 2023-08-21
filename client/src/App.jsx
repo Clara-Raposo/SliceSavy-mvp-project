@@ -31,15 +31,4 @@ const App = () => {
   );
 };
 
-
-// const App = () => {
-//   return (
-//     <div>
-//       <Navbar />
-//       <Map />
-//       <FavoritePizzerias />
-//     </div>
-//   );
-// };
-
 export default App;

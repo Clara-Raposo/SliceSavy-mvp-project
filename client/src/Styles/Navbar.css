@@ -103,10 +103,6 @@
     .navigation__menu-link {
       padding: 5px;
     }
-
-    /* .navigation__menu-item:hover {
-      background-color: #eee;
-    } */
     .navigation__menu--expanded {
       z-index: 1000;
     display: block;
