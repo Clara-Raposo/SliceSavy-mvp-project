@@ -26,8 +26,13 @@ const Map = ({ addToFavorites }) => {
     lng: 2.1734,
   };
 
+  const handleAddToFavorites = (pizzeria) => {
+    addToFavorites(pizzeria);
+    setSelectedPizzeria(null);
+  };
+
   return (
-    <LoadScript googleMapsApiKey="AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E">
+    <LoadScript googleMapsApiKey={"AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E"}>
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={14}
@@ -162,7 +167,7 @@ const Map = ({ addToFavorites }) => {
               />
               <button 
               className="info-window__button"
-              onClick={() => addToFavorites(selectedPizzeria)}>Add to favorites</button>
+              onClick={() => handleAddToFavorites(selectedPizzeria)}>Add to favorites</button>
             </div>
           </InfoWindow>
         )}
