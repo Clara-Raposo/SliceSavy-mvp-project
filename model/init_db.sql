@@ -22,7 +22,7 @@ CREATE TABLE pizzerias (
 CREATE TABLE favourites (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pizzeria_id INT NOT NULL, 
-    photo_url VARCHAR(255) NOT NULL, -- no lo he hecho bien
+    photo_url VARCHAR(255) NOT NULL, 
     FOREIGN KEY (pizzeria_id) REFERENCES pizzerias(id)
 );
 

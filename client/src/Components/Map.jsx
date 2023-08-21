@@ -2,10 +2,10 @@ import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import "../Styles/Map.css";
 
+
 const Map = ({ addToFavorites }) => {
   const [selectedPizzeria, setSelectedPizzeria] = useState(null);
   const [pizzerias, setPizzerias] = useState([]);
-
   
   useEffect(() => {
     fetch('/api/pizzerias')
@@ -31,8 +31,11 @@ const Map = ({ addToFavorites }) => {
     setSelectedPizzeria(null);
   };
 
+  const googleMapsApiKey = import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY;
+
   return (
-    <LoadScript googleMapsApiKey={"AIzaSyDFFy5w5u2Nx1ydPNOUn_tMfLrd9zQnF1E"}>
+    
+    <LoadScript googleMapsApiKey={googleMapsApiKey}>
       <GoogleMap
         mapContainerStyle={mapStyles}
         zoom={14}
