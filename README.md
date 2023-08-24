@@ -43,6 +43,12 @@ Run `npm start` in project directory to start the Express server on port 5000
 Here is the [presentation](https://www.canva.com/design/DAFsKSTFyug/a1uubXgvpNDOl_34ZP138Q/edit?utm_content=DAFsKSTFyug&utm_campaign=designshare&utm_medium=link2&utm_source=sharebutton) to the project, where you can find details about the database and the prototype.
 
 
-**Last but not least**
+**Google Maps Api**
 
-`npm install react-icons --save` in order to use the icons I chose.
+Make your [Google maps api key](https://developers.google.com/maps/apis-by-platform?hl=es-419). Choose the option: "Maps JavaScript API" Afterwards create a `.env` file at the root of client. In this file add: 
+
+```
+VITE_APP_GOOGLE_MAPS_API_KEY=YOUR_API_KEY
+```
+
+(replace YOUR_API_KEY with your actual api key)
