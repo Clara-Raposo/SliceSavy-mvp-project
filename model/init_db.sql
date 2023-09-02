@@ -26,6 +26,14 @@ CREATE TABLE favourites (
     FOREIGN KEY (pizzeria_id) REFERENCES pizzerias(id)
 );
 
+CREATE TABLE reviews (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    pizzeria_id INT NOT NULL, 
+    review VARCHAR(255) NOT NULL, 
+    day DATE,
+    FOREIGN KEY (pizzeria_id) REFERENCES pizzerias(id)
+);
+
 INSERT INTO pizzerias (name, address, latitude, longitude, photo_url)
         VALUES ('Makekosa', 'C. de Floridablanca, 102, 08015 Barcelona', 41.379581672250100, 2.160129228627624, 'https://i.pinimg.com/236x/5f/ff/09/5fff09ae584723513d1847cb8647e401.jpg?nii=t');
 

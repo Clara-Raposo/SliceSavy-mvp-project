@@ -86,4 +86,81 @@ router.delete('/favourites/:id', async (req, res) => {
     res.status(500).json({ error: 'Internal Server Error' });
   }
 });
+
+
+
+//Obtener todas las reviews de una pizzeria
+router.get("/pizzerias/:pizzeria_id/reviews", async (req, res) => {
+  try{
+  const result = await db(`SELECT * from reviews WHERE pizzeria_id = ${req.params.pizzeria_id};`);
+  const reviews = result.data;
+  res.send(reviews);
+} catch (error) {
+  res.send(500);
+}
+});
+
+router.post("/reviews", async (req, res) => {
+  try {
+    const { pizzeriaId } = req.body;
+
+   //const pizzeriaId = req.params.pizzeria_id;
+
+    if (!pizzeriaId) {
+      return res.status(400).json({ error: 'Missing pizzeriaId' });
+    }
+   
+    await db(`INSERT INTO reviews (pizzeria_id, review) VALUES (${pizzeriaId}, '${req.body.review}');`);
+    const result = await db(`SELECT * from reviews WHERE pizzeria_id = ${pizzeriaId};`)
+    res.send(result.data)
+    //res.json({ message: 'Review added to the pizzeria' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.put("/reviews/:id", async (req, res) => {
+  try {
+    
+    const result = await db(
+      `SELECT * FROM reviews WHERE id = ${req.params.id};`
+    );
+
+    if (!result) {
+      res.status(404).send();
+      return;
+    }
+
+    await db(
+      `UPDATE reviews SET review = '${req.body.review}', WHERE id = ${req.params.todo_id};`
+    );
+      
+    //const updatedResult = await db(`SELECT * from reviews WHERE pizzeria_id = ${req.params.pizzeria_id};`)
+      res.status(200).send()
+    //res.send(updatedResult.data)
+   // const result = await db(`SELECT * from reviews WHERE pizzeria_id = ${req.params.pizzeria_id};`)
+    //res.json({ message: 'Review added to the pizzeria' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
+router.delete("/reviews/:id", async (req, res) => {
+  try {
+    const reviewId = req.params.id;
+
+     await db(`DELETE FROM reviews WHERE id = ${reviewId};`);
+
+    // const result = await db(`SELECT * from reviews WHERE pizzeria_id = ${req.params.pizzeria_id};`)
+    res.status(200).send()
+    //res.send(result.data)
+    //res.json({ message: 'Pizzeria removed from favorites.' });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ error: 'Internal Server Error' });
+  }
+});
+
 module.exports = router;
