@@ -1,32 +1,25 @@
-import { useState } from 'react';
 import "./App.css";
 import Navbar from './Components/Navbar';
-import Map from './Components/Map';
-import FavoritePizzerias from './Components/FavoritePizzerias';
 import Footer from './Components/Footer';
+import { Routes, Route, Link } from "react-router-dom";
+import DetailPizzeria from "./Components/DetailPizzeria.jsx"
+import PizzeriasPage from "./Components/PizzeriasPage.jsx"
 
 const App = () => {
-  const [favoritePizzerias, setFavoritePizzerias] = useState([]);
-
-  const addToFavorites = (pizzeria) => {
-    if (!favoritePizzerias.some(item => item.id === pizzeria.id)) {
-      setFavoritePizzerias(prevFavorites => [...prevFavorites, pizzeria]);
-    }
-  };
-
-  const removeFromFavorites = (pizzeriaId) => {
-    setFavoritePizzerias(prevFavorites => prevFavorites.filter(item => item.id !== pizzeriaId));
-  };
+ 
 
   return (
     <div>
       <Navbar />
-      <Map 
-      addToFavorites={addToFavorites} />
-      <FavoritePizzerias 
-      favoritePizzerias={favoritePizzerias} 
-      removeFromFavorites={removeFromFavorites} />
+      <main>
+        <Routes>
+          <Route path="/" element={<PizzeriasPage/>}/>
+          <Route path="/pizzerias/:pizzeria_id" element={<DetailPizzeria/>} />
+        </Routes>
+       </main>
       <Footer />
+
+    
     </div>
   );
 };

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { GoogleMap, LoadScript, Marker, InfoWindow } from '@react-google-maps/api';
 import "../Styles/Map.css";
+import {NavLink} from 'react-router-dom'
 
 
 const Map = ({ addToFavorites }) => {
@@ -32,7 +33,10 @@ const Map = ({ addToFavorites }) => {
   };
 
   const googleMapsApiKey = import.meta.env.VITE_APP_GOOGLE_MAPS_API_KEY;
-
+  if(!pizzerias.length){
+    return null
+  }
+ console.log(pizzerias)
   return (
     
     <LoadScript googleMapsApiKey={googleMapsApiKey}>
@@ -161,7 +165,7 @@ const Map = ({ addToFavorites }) => {
             onCloseClick={() => setSelectedPizzeria(null)}
           >
             <div className='info-window'>
-              <h3 className="info-window__title">{selectedPizzeria.name}</h3>
+              <h3 className="info-window__title"><NavLink to={`/pizzeria/${selectedPizzeria.id}`}>{selectedPizzeria.name}</NavLink></h3>
               <p className="info-window__address">{selectedPizzeria.address}</p>
               <img 
               src={selectedPizzeria.photo_url} 
