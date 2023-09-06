@@ -14,7 +14,7 @@ const App = () => {
       <main>
         <Routes>
           <Route path="/" element={<PizzeriasPage/>}/>
-          <Route path="/pizzerias/:pizzeria_id" element={<DetailPizzeria/>} />
+          <Route path="/pizzeria/:pizzeria_id" element={<DetailPizzeria/>} />
         </Routes>
        </main>
       <Footer />

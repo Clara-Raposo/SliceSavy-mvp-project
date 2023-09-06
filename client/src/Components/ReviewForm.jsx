@@ -1,10 +1,13 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 
-export const ReviewForm = () =>{
+export const ReviewForm = ({pizzeriaId, onSuccess}) =>{
+    const navigate = useNavigate()
     const [review, setReview] = useState({
-        pizzeria_id: 0,
         review:""
     })
+
+ 
 
     const handleChange = event =>{
         const name = event.target.name
@@ -20,16 +23,21 @@ export const ReviewForm = () =>{
 
     const addReview = review =>{
         const date = new Date().toISOString().slice(0,10);
-        fetch("api/reviews", {
+        fetch("/api/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({...reviews, date})
+            body: JSON.stringify({...review, pizzeriaId, date})
         }).then(res => res.json())
-        .then(pillId => {
-         
-            navigate(`/new-pill-created/${pillId.lastId}`)})
+        .then( () => {
+            //navigate(`/pizzeria/${pizzeriaId}`)
+            //window.location.reload()
+            onSuccess()
+        }
+
+        )
+
         .catch(error => {
             setError(error)
         })
@@ -37,8 +45,8 @@ export const ReviewForm = () =>{
 
 
     return<div>
-         <form onSubmit={(e) = handleSubmit(e)}>
-            <textarea value = {review.review} onChange={(e) => handleChange(e)}></textarea>
+         <form onSubmit={(e) => handleSubmit(e)}>
+            <textarea value={review.review} name="review" onChange={(e) => handleChange(e)}></textarea>
             <button type="submit">Enviar</button>
         </form>
     </div>

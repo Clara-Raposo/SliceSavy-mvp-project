@@ -23,7 +23,7 @@ router.get("/pizzerias", async (req, res) => {
 router.get('/pizzerias/:id', async (req, res) => {
   try {
     const pizzeriaId = req.params.id;
-    const result = await db.query('SELECT * FROM pizzerias WHERE id = ?', [pizzeriaId]);
+    const result = await db(`SELECT * FROM pizzerias WHERE id = ${pizzeriaId} ;`);
     const pizzeria = result.data[0];
     res.json(pizzeria);
   } catch (error) {

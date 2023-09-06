@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useEffect } from "react";
 import {useParams} from "react-router-dom"
+import ReviewForm from "./ReviewForm.jsx";
+
 
 export const DetailPizzeria = () => {
     const {pizzeria_id} = useParams()
@@ -19,7 +21,7 @@ export const DetailPizzeria = () => {
 
     useEffect(() =>{
         getPizzeria()
-       // getReviews()
+        getReviews()
     },[pizzeria_id])
 
     const getPizzeria = () =>{
@@ -46,15 +48,13 @@ export const DetailPizzeria = () => {
         })
         setIsLoading(false)
     }
-
-    const handleSubmit = () =>{
-
-    }
    
     if(!pizzeria){
         return <div>loading</div>
     }
     return <div>
+
+
         {isLoading && <p>Cargando...</p>}
 
         {!isLoading && (
@@ -76,10 +76,7 @@ export const DetailPizzeria = () => {
 
         
 
-        <form onSubmit={handleSubmit()}>
-            <textarea></textarea>
-            <button type="submit">Enviar</button>
-        </form>
+       <ReviewForm pizzeriaId={pizzeria_id} onSuccess={getReviews}/>
     </div>
 }
 
