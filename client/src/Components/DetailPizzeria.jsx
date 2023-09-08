@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useEffect } from "react";
 import {useParams} from "react-router-dom"
 import ReviewForm from "./ReviewForm.jsx";
+import "./DetailPizzeria.css"
 
 
 export const DetailPizzeria = () => {
@@ -9,13 +10,13 @@ export const DetailPizzeria = () => {
     const [pizzeria, setPizzeria] = useState(null)
     const [reviews, setReviews] = useState([{
         pizzeria_id: 1,
-        review: "Hello, loved it",
-        date:"22-02-2020"
+        review: "hello",
+        day:"2222-03-24"
     },
     {
         pizzeria_id: 1,
-        review: "Hello, loved it",
-        date:"22-02-2020"
+        review: "hello",
+        day:"2222-03-24"
     }])
     const [isLoading, setIsLoading] = useState(false)
 
@@ -48,6 +49,19 @@ export const DetailPizzeria = () => {
         })
         setIsLoading(false)
     }
+
+    const getDate = review =>{
+        const date = new Date(review.day)
+        return date.toISOString().slice(0,10);
+    }
+
+    const deletePill = review =>{
+        fetch(`/api/reviews/${review}`, {
+            method: "DELETE"
+          }).then( () => {
+            getReviews()
+          })
+    }
    
     if(!pizzeria){
         return <div>loading</div>
@@ -58,19 +72,32 @@ export const DetailPizzeria = () => {
         {isLoading && <p>Cargando...</p>}
 
         {!isLoading && (
-        <div>
-        
-        <h2>{pizzeria.name}</h2>
-        <h3>Dirección</h3>
-        <p>{pizzeria.address}</p>
+        <div className="detail-pizzeria-container">
+            
+            <div className="detail-pizzeria-container-image">
+                <img className="detail-pizzeria-image" src={pizzeria.photo_url}></img>
+            </div>
 
-        <ul>
-            {reviews.map( review =>(
-                <li key={review.id}>
-                    <div><p>{review.review}</p></div>
-                </li>
-            ))}
-        </ul>
+            <div className="detail-pizzeria-info">
+                <h2 className="detail-pizzeria-h2">{pizzeria.name}</h2>
+                <p className="detail-pizzeria-p">{pizzeria.address}</p>
+                <p>{pizzeria.tlf}</p>
+            </div>
+
+            <div>
+                <h3 className="detail-pizzeria-h3">Reviews</h3>
+                <ul>
+                    {reviews.map( review =>(
+                        <li key={review.id}>
+                            <div className="detail-pizzeria-review">
+                                <p className="detail-pizzeria-review-day">{getDate(review)}</p>
+                                <p className="detail-pizzeria-review-p">{review.review}</p>
+                                <button className="detail-pizzeria-review-button" onClick={() => deletePill(review.id)}>Delete</button>
+                            </div>
+                        </li>
+                    ))}
+                </ul>
+            </div>
         </div>)}
         
 

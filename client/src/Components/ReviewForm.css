@@ -1,0 +1,18 @@
+.form-review__textarea{
+    width: 50%;
+    background-color: aquamarine;
+}
+
+textarea{
+    width: 100%;
+}
+
+.form-review{
+    border: solid black 1px;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-review__button{
+    width: 60%;
+}

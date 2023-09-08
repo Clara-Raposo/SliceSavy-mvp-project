@@ -29,7 +29,7 @@ CREATE TABLE favourites (
 CREATE TABLE reviews (
     id INT AUTO_INCREMENT PRIMARY KEY,
     pizzeria_id INT NOT NULL, 
-    review VARCHAR(255) NOT NULL, 
+    review VARCHAR(5000) NOT NULL, 
     day DATE,
     FOREIGN KEY (pizzeria_id) REFERENCES pizzerias(id)
 );

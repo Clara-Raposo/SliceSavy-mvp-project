@@ -110,7 +110,7 @@ router.post("/reviews", async (req, res) => {
       return res.status(400).json({ error: 'Missing pizzeriaId' });
     }
    
-    await db(`INSERT INTO reviews (pizzeria_id, review) VALUES (${pizzeriaId}, '${req.body.review}');`);
+    await db(`INSERT INTO reviews (pizzeria_id, review, day) VALUES (${pizzeriaId}, "${req.body.review}", '${req.body.day}');`);
     const result = await db(`SELECT * from reviews WHERE pizzeria_id = ${pizzeriaId};`)
     res.send(result.data)
     //res.json({ message: 'Review added to the pizzeria' });

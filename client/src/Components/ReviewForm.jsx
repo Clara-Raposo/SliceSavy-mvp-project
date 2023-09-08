@@ -1,13 +1,12 @@
 import React, { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import "./ReviewForm.css"
 
 export const ReviewForm = ({pizzeriaId, onSuccess}) =>{
     const navigate = useNavigate()
     const [review, setReview] = useState({
         review:""
     })
-
- 
 
     const handleChange = event =>{
         const name = event.target.name
@@ -22,13 +21,13 @@ export const ReviewForm = ({pizzeriaId, onSuccess}) =>{
     }
 
     const addReview = review =>{
-        const date = new Date().toISOString().slice(0,10);
+        const day = new Date().toISOString().slice(0,10);
         fetch("/api/reviews", {
             method: "POST",
             headers: {
               "Content-Type": "application/json"
             },
-            body: JSON.stringify({...review, pizzeriaId, date})
+            body: JSON.stringify({...review, pizzeriaId, day})
         }).then(res => res.json())
         .then( () => {
             //navigate(`/pizzeria/${pizzeriaId}`)
@@ -45,9 +44,9 @@ export const ReviewForm = ({pizzeriaId, onSuccess}) =>{
 
 
     return<div>
-         <form onSubmit={(e) => handleSubmit(e)}>
-            <textarea value={review.review} name="review" onChange={(e) => handleChange(e)}></textarea>
-            <button type="submit">Enviar</button>
+         <form onSubmit={(e) => handleSubmit(e)} className="form-review">
+            <textarea className="form-review__textaera" value={review.review} name="review" onChange={(e) => handleChange(e)}></textarea>
+            <button className="form-review__button" type="submit">Enviar</button>
         </form>
     </div>
 
