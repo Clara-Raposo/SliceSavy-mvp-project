@@ -5,8 +5,10 @@ ul{
 }
 .detail-pizzeria-container{
     width: 1000px;
-    border: solid 1px black;
+    /*border: solid 1px black;*/
     margin: auto;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
 }
 
 .detail-pizzeria-image{
@@ -19,7 +21,7 @@ ul{
     display: flex;
     justify-content: center;
     background-color: white;
-    border: solid 1px black;
+    /*border: solid 1px black;*/
 }
 .detail-pizzeria-h2 {
     font-size: 2em;
@@ -48,7 +50,8 @@ ul{
     margin: auto;
     margin-top: 12px;
     border-top: 2px solid #556b2f;
-
+    /*background-color: #fffdf9;*/
+    padding: 6px;
 }
 .detail-pizzeria-h3{
     font-family: 'Bricolage Grotesque', sans-serif;
@@ -57,13 +60,48 @@ ul{
     padding-left: 10%;
     font-size: 25px;
 }
+.detail-pizzeria-h4{
+    font-family: 'Bricolage Grotesque', sans-serif;
+    color: #232b2b;
+    font-weight: 600;
+    padding: 0px;
+    padding-left: 10%;
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 0px;
+}
 .detail-pizzeria-review-p{
     padding-left: 10px;
     font-family: 'Bricolage Grotesque', sans-serif;
+    /*border: solid 1px black;*/
+    margin: 0px;
 }
 .detail-pizzeria-review-day{
     display: block;
+    /*border: solid 1px black;*/
+    width: 20%;
+    margin: 0px;
+    font-size: 12px;
+    margin-bottom: 5px;
+    font-family: 'Bricolage Grotesque', sans-serif;
 }
 .detail-pizzeria-review-button{
-    width: 50%;
+    width: 10%;
+    margin: 0px;
+    align-content: flex-end;
+    align-self: flex-end;
+    background-color: #556b2f;
+    border: solid 2px  #556b2f;
+    color:#fdf5e6;
+    border-radius: 3px;
+    padding: 4px 8px;
+    font-family: 'Bricolage Grotesque', sans-serif;
+}
+
+.detail-pizzeria-review-button:hover{
+    background-color: #fdf5e6;
+    border: 2px solid #556b2f;
+    color:#232b2b;
+    padding: 4px 8px;
+    font-weight: 600;
 }

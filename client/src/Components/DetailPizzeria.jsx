@@ -66,13 +66,13 @@ export const DetailPizzeria = () => {
     if(!pizzeria){
         return <div>loading</div>
     }
-    return <div>
+    return <div className="detail-pizzeria-container">
 
 
         {isLoading && <p>Cargando...</p>}
 
         {!isLoading && (
-        <div className="detail-pizzeria-container">
+        <div >
             
             <div className="detail-pizzeria-container-image">
                 <img className="detail-pizzeria-image" src={pizzeria.photo_url}></img>
@@ -101,7 +101,7 @@ export const DetailPizzeria = () => {
         </div>)}
         
 
-        
+        <h4 className="detail-pizzeria-h4">Add your review</h4>
 
        <ReviewForm pizzeriaId={pizzeria_id} onSuccess={getReviews}/>
     </div>

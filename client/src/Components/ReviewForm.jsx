@@ -45,8 +45,8 @@ export const ReviewForm = ({pizzeriaId, onSuccess}) =>{
 
     return<div>
          <form onSubmit={(e) => handleSubmit(e)} className="form-review">
-            <textarea className="form-review__textaera" value={review.review} name="review" onChange={(e) => handleChange(e)}></textarea>
-            <button className="form-review__button" type="submit">Enviar</button>
+            <textarea className="form-review__textaera" value={review.review} required name="review" onChange={(e) => handleChange(e)}></textarea>
+            <button className="form-review__button" type="submit">Send</button>
         </form>
     </div>
 
